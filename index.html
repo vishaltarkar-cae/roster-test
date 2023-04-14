@@ -1,0 +1,438 @@
+
+<html lang="ko"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Crew Connection - Crew Roster List</title>
+</head>
+<body onhelp="CIAhelp();return false;" onload="bodyOnload.execute()" onclick="bodyOnclick.execute()">
+
+<iframe name="remoteScriptIFrame" id="remoteScriptIFrame" src="blank.html" style="display:none;border:0px;width:0px;height:0px"></iframe>
+<span id="dynamicDebugPanel"></span>
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr class="brandArea" valign="top">
+<td colspan="2">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tbody><tr>
+<td class="branding">&nbsp;</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<table id="leftNavMenuTable" border="0" cellspacing="0" cellpadding="0" valign="top">
+<tbody><tr>
+<td class="barHeader" id="titleLeftBarId">&nbsp;</td>
+</tr>
+<tr valign="top">
+<td valign="top">
+<script language="JavaScript1.2" src="scripts/leftNavigation.js"></script><script language="Javascript">
+function loadLeftNavigation()
+{
+var menuArray = new Array();
+menuArray[1] = new MenuItem("Inquiries","#", 6,false);
+menuArray[1][1] = new MenuItem("Crew In Station", "crewInStationPopulate.do", null, true, 'n');
+menuArray[1][2] = new MenuItem("Crew on Flight", "crewOnFlightPopulate.do", null, true, 'n');
+menuArray[1][3] = new MenuItem("Contact/Personal Details", "personalDetail.page", null, true, 'n');
+menuArray[1][4] = new MenuItem("Qualifications", "qualification.do", null, true, 'n');
+menuArray[1][5] = new MenuItem("Training", "training.page", null, true, 'n');
+menuArray[1][6] = new MenuItem("Relayed Notifications", "relayedNotificationController.do", null, true, 'n');
+menuArray[2] = new MenuItem("Leave","#", 3,false);
+menuArray[2][1] = new MenuItem("Leave Ballot", "leaveBallotBidStatusPopulate.do", null, true, 'n');
+menuArray[2][2] = new MenuItem("Leave Request", "populateLeaveRequest.do", null, true, 'n');
+menuArray[2][3] = new MenuItem("Leave Assignments", "leaveAssignment.do", null, true, 'n');
+menuArray[3] = new MenuItem("Reports","#", 3,false);
+menuArray[3][1] = new MenuItem("Roster Report", "rosterReportPopulateDates.do", null, true, 'n');
+menuArray[3][2] = new MenuItem("Roster Summary", "rosterSummaryPopulate.do", null, true, 'n');
+menuArray[3][3] = new MenuItem("Crew Roster List", "crewRosterListPopulateDates.do", null, true, 'n');
+return menuArray;
+}
+</script>
+<table id="leftNavMenuTable" cellspacing="0" cellpadding="3" border="0"><tbody><tr><td width="150" class="leftNav"> <layer name="leftNavMenu"><div id="leftNavMenu"><table width="144" valign="top" cellspacing="0" cellpadding="0" border="0" height="100%"><tbody><tr><td style="" class="header" onmouseover="switchStyleClass('header1');" onmouseout="switchStyleClass('header1');" id="header1"> <a href="#" id="1" onclick="false; setMenuState(1);expandMenu('1menu', '1expand')"><img src="images/panel_expand.gif" border="0" id="1expand">Inquiries</a></td></tr><tr><td><div id="1menu" style="display:none"><table cellpadding="0" cellspacing="0" border="0" width="100%"> <tbody><tr><td onmouseover="switchStyleClass('sub1.1');" class="sub" onmouseout="switchStyleClass('sub1.1');" id="sub1.1"><a href="crewInStationPopulate.do">Crew In Station</a></td></tr><tr><td onmouseover="switchStyleClass('sub1.2');" class="sub" onmouseout="switchStyleClass('sub1.2');" id="sub1.2"><a href="crewOnFlightPopulate.do">Crew on Flight</a></td></tr><tr><td onmouseover="switchStyleClass('sub1.3');" class="sub" onmouseout="switchStyleClass('sub1.3');" id="sub1.3"><a href="personalDetail.page">Contact/Personal Details</a></td></tr><tr><td onmouseover="switchStyleClass('sub1.4');" class="sub" onmouseout="switchStyleClass('sub1.4');" id="sub1.4"><a href="qualification.do">Qualifications</a></td></tr><tr><td onmouseover="switchStyleClass('sub1.5');" class="sub" onmouseout="switchStyleClass('sub1.5');" id="sub1.5"><a href="training.page">Training</a></td></tr><tr><td onmouseover="switchStyleClass('sub1.6');" class="sub" onmouseout="switchStyleClass('sub1.6');" id="sub1.6"><a href="relayedNotificationController.do">Relayed Notifications</a></td></tr></tbody></table></div></td></tr><tr><td style="" class="header" onmouseover="switchStyleClass('header2');" onmouseout="switchStyleClass('header2');" id="header2"> <a href="#" id="2" onclick="false; setMenuState(2);expandMenu('2menu', '2expand')"><img src="images/panel_expand.gif" border="0" id="2expand">Leave</a></td></tr><tr><td><div id="2menu" style="display:none"><table cellpadding="0" cellspacing="0" border="0" width="100%"> <tbody><tr><td onmouseover="switchStyleClass('sub2.1');" class="sub" onmouseout="switchStyleClass('sub2.1');" id="sub2.1"><a href="leaveBallotBidStatusPopulate.do">Leave Ballot</a></td></tr><tr><td onmouseover="switchStyleClass('sub2.2');" class="sub" onmouseout="switchStyleClass('sub2.2');" id="sub2.2"><a href="populateLeaveRequest.do">Leave Request</a></td></tr><tr><td onmouseover="switchStyleClass('sub2.3');" class="sub" onmouseout="switchStyleClass('sub2.3');" id="sub2.3"><a href="leaveAssignment.do">Leave Assignments</a></td></tr></tbody></table></div></td></tr><tr><td style="" class="header" onmouseover="switchStyleClass('header3');" onmouseout="switchStyleClass('header3');" id="header3"> <a href="#" id="3" onclick="false; setMenuState(3);expandMenu('3menu', '3expand')"><img src="images/panel_collapse.gif" border="0" id="3expand">Reports</a></td></tr><tr><td><div id="3menu" style=""><table cellpadding="0" cellspacing="0" border="0" width="100%"> <tbody><tr><td onmouseover="switchStyleClass('sub3.1');" class="sub" onmouseout="switchStyleClass('sub3.1');" id="sub3.1"><a href="rosterReportPopulateDates.do">Roster Report</a></td></tr><tr><td onmouseover="switchStyleClass('sub3.2');" class="sub" onmouseout="switchStyleClass('sub3.2');" id="sub3.2"><a href="rosterSummaryPopulate.do">Roster Summary</a></td></tr><tr><td onmouseover="switchStyleClass('sub3.3');" class="sub" onmouseout="switchStyleClass('sub3.3');" id="sub3.3"><a href="crewRosterListPopulateDates.do">Crew Roster List</a></td></tr></tbody></table></div></td></tr></tbody></table></div></layer> <script language="JavaScript1.2">     showMenu('false','150');  </script></td></tr></tbody></table>
+<table>
+<tbody><tr>
+<td class="header" id="header1" onmouseover="switchStyleClass('header1');" onmouseout="switchStyleClass('header1');">
+<a href="logout.page">Log Off</a>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<table id="leftNavFiller" border="0" cellspacing="0" cellpadding="0" valign="top" height="100%">
+<tbody><tr>
+<td width="150">&nbsp;</td>
+</tr>
+</tbody></table>
+</td>
+<td>
+<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr valign="top">
+<td align="left" id="staffInfo">
+<div class="staffInfo">
+<style type="text/css">
+    @media Print {
+        td.statusTitle {
+            display: none
+        }
+
+        td.statusInfo {
+            display: none
+        }
+
+        td.statusTitlePrintable {
+            font-weight: bold;
+            height: 24pt;
+        }
+
+        td.statusInfoPrintable {
+            padding-right: 8pt;
+            font-weight: normal;
+            height: 24pt;
+        }
+
+    }
+</style>
+<div class="staffShortInformation">
+<table border="0" cellpadding="0" cellspacing="2">
+<tbody><tr>
+<td class="statusTitlePrintable">Staff:</td>
+<td class="statusInfoPrintable">LEE,YONGJAE, .
+</td>
+<td class="statusTitlePrintable">Id:</td>
+<td class="statusInfoPrintable"><a href="tel:1001464">1001464</a>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="staffFullInformation">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<colgroup span="11"></colgroup>
+<tbody><tr>
+<td class="statusBG" colspan="11">
+<div id="sectionName"></div>
+</td>
+</tr>
+<tr>
+<td class="statusTitle" align="right" colspan="11"></td>
+</tr>
+<tr>
+<td class="statusTitle" style="padding-left:10px;">Staff:</td>
+<td class="statusTitle">Staff Id:</td>
+<td class="statusTitle">Rank:</td>
+<td class="statusTitle">Base:</td>
+<td class="statusTitle">Fleet:</td>
+<td class="statusTitle" colspan="0">&nbsp;</td>
+</tr>
+<tr>
+<td class="statusInfo" style="padding-left:10px;">LEE,YONGJAE, .
+</td>
+<td class="statusInfo"><a href="tel:1001464">1001464</a>
+</td>
+<td class="statusInfo">CAP
+</td>
+<td class="statusInfo">ICN
+</td>
+<td class="statusInfo">737
+</td>
+<td class="statusInfo" colspan="0">&nbsp;</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td align="left" id="mainarea" height="100%" style="padding-left:10">
+<img src="/cia/images/spacer.gif" height="12px">
+<table>
+<tbody><tr>
+<td>
+</td>
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+</td></tr><tr><td><div class="statusMessage" style="visibility:hidden"></div></td></tr>
+</tbody></table>
+<img src="/cia/images/spacer.gif" height="7px">
+<div class="content">
+<script>
+    /* To force IE not to extend column width in printing to screen value (too wide)*/
+    var tableName = 'CrewRosterList';
+    function window.onbeforeprint() {
+        var col = document.all.tags("TH");
+
+        if (col != null) {
+            for (i = 0; i < col.length; i++)
+                if (col[i].className == "tableCellHeader") {
+                    col[i].style.width = null;
+                }
+        }
+        var table = document.getElementById(tableName);
+        table.style.fontSize = "9px";
+        table.style.width = null;
+        table.style.cssText = null;
+    }
+
+    function window.onafterprint() {
+
+        var table = document.getElementById(tableName);
+        table.style.width = null;
+        table.style.cssText = null;
+        table.style.fontSize = null;
+
+        //setTimeout("window.location.reload()",50)
+    }
+</script>
+<script>
+    var printingWindow;
+    function closePrintingWindow() {
+        printingWindow.close();
+
+    }
+    function printingView(toPrint) {
+        printingWindow = window.open("crewRosterListPrinting.page?toPrint=" + toPrint, "Printer_Friendly", "menubar=no,toolbar=no,scrollbars");
+        window.onunload = closePrintingWindow;
+    }
+</script>
+<div class="title" style="null"><span class="title">Crew Roster List</span><span class="title"></span></div>
+<script>helpFileName = "./reports/crew_roster_list_page.htm";</script>
+<table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td colspan="2" valign="top" id="panel64418" align="left"><table class="defaultPanel" cellspacing="0" cellpadding="0" border="0" id="panel64418_panelId"><tbody><tr><td><table cellspacing="0" cellpadding="0" border="0" style="width:100%;height:100%;" class="defaultPanel_contentFrame" id="panel64418_contentFrameId"><tbody><tr valign="top"><td><table cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+<form name="rosterReportForm" method="post" action="/cia/crewRosterList.do" class="dropShadowPanel"></form>
+<tbody><tr>
+<td colspan="2" valign="top" id="panel64419" align="left"><table class="defaultPanel" cellspacing="0" cellpadding="0" border="0" id="panel64419_panelId"><tbody><tr><td><div style="width:100%" class="defaultPanel_titleFrame" id="panel64419_titleFrameId"><span class="defaultPanel_titleText">Date Criteria</span></div><table cellspacing="0" cellpadding="0" border="0" style="width:100%;height:100%;" class="defaultPanel_contentFrame" id="panel64419_contentFrameId"><tbody><tr valign="top"><td><table cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+<tbody><tr><th valign="top" nowrap="true" width="1%" class="field"><span class="field">From:&nbsp;</span></th><td valign="top" nowrap="true" class="field"><input type="text" name="rqstFrom" maxlength="10" size="10" value="21SEP22" id="rqstFrom" class="field"><a href="javascript:false;rqstFromDialog.show();focusCombo('rqstFrom');  showInputDate('rqstFrom');"><img style="margin-left:2px;vertical-align:middle;" border="0" src="images/calendar.gif"></a><img name="rqstFromrequired" src="/cia/images/clearpixel.gif"><br><script>var rqstFromDialog = new DialogTag('rqstFromDialog', 'rqstFrom', 'calendar.page?fieldName=rqstFrom&dateFormat=ddmmmyy&validDates=null&blackoutDates=null&dialogId=rqstFromDialog&dialogTitle=Choose Date' ); bodyOnclick.addFunction( function() { rqstFromDialog.hideIfVisible(); } );</script><iframe id="rqstFromDialog" frameborder="0" border="0" style="display:none;position:absolute" src="blank.html">&amp;nbsp;</iframe></td></tr>
+<tr><th valign="top" nowrap="true" width="1%" class="field"><span class="field">To:&nbsp;</span></th><td valign="top" nowrap="true" class="field"><input type="text" name="rqstTo" maxlength="10" size="10" value="22SEP22" id="rqstTo" class="field"><a href="javascript:false;rqstToDialog.show();focusCombo('rqstTo');  showInputDate('rqstTo');"><img style="margin-left:2px;vertical-align:middle;" border="0" src="images/calendar.gif"></a><img name="rqstTorequired" src="/cia/images/clearpixel.gif"><br><script>var rqstToDialog = new DialogTag('rqstToDialog', 'rqstTo', 'calendar.page?fieldName=rqstTo&dateFormat=ddmmmyy&validDates=null&blackoutDates=null&dialogId=rqstToDialog&dialogTitle=Choose Date' ); bodyOnclick.addFunction( function() { rqstToDialog.hideIfVisible(); } );</script><iframe id="rqstToDialog" frameborder="0" border="0" style="display:none;position:absolute" src="blank.html">&amp;nbsp;</iframe></td></tr>
+<tr><td colspan="9" align="left" nowrap="true"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+<td align="left" nowrap="true"><table cellpadding="0" cellspacing="0" style="margin:0px"><tbody><tr><td class="capleft"><img src="images/spacer.gif" width="4"></td><td class="buttonMiddle"><input type="submit" value="Query" onclick="" class="button"></td><td class="capright"><img src="images/spacer.gif" width="4"></td></tr></tbody></table></td>
+<td align="left" nowrap="true"><table cellpadding="0" cellspacing="0" style="margin:0px"><tbody><tr><td class="capleft"><img src="images/spacer.gif" width="4"></td><td class="buttonMiddle"><input type="button" value="Print" onclick=";window.print()" class="button"></td><td class="capright"><img src="images/spacer.gif" width="4"></td></tr></tbody></table></td>
+</tr></tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table></td></tr></tbody></table></td>
+</tr>
+<tr>
+<td colspan="2" valign="top" id="panel64420" align="left"><table class="defaultPanel" cellspacing="0" cellpadding="0" border="0" id="panel64420_panelId"><tbody><tr><td><table cellspacing="0" cellpadding="0" border="0" style="width:100%;height:100%;" class="defaultPanel_contentFrame" id="panel64420_contentFrameId"><tbody><tr valign="top"><td><span style="color:#000000;font-weight:bold;font-size:14px">
+<center>
+<br> &nbsp; Roster Crew List from 21SEP22 -- 22SEP22<br><br>
+(Times shown are in Port Local times)
+</center>
+</span><table cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+
+<tbody><tr><td align="left" nowrap="true"><div id="CrewRosterList_savingTableDiv" style="position:absolute;display:none;border:1px solid #cec7ad;background:#f6f5ef;width:160;height:25;"><table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td align="center"><span style="font-weight:bold;font-size:14px;font-size:14px;">Saving Table...</span></td></tr></tbody></table></div></td></tr><tr><td style="padding-left:6px; padding-right:6px; padding-top:6px; padding-bottom:6px;" align="left" nowrap="true"><table class="table" border="0" cellspacing="1" cellpadding="2" id="CrewRosterList" width="100%" style="table-layout: fixed; width: 791px;">
+<colgroup><col id="CrewRosterList_0" style="width: 67px;"><col id="CrewRosterList_1" style="width: 36px;"><col id="CrewRosterList_2" style="width: 62px;"><col id="CrewRosterList_3" style="width: 28px;"><col id="CrewRosterList_4" style="width: 62px;"><col id="CrewRosterList_5" style="width: 28px;"><col id="CrewRosterList_6" style="width: 56px;"><col id="CrewRosterList_7" style="width: 33px;"><col id="CrewRosterList_8" style="width: 59px;"><col id="CrewRosterList_9" style="width: 53px;"><col id="CrewRosterList_10" style="width: 80px;"><col id="CrewRosterList_11" style="width: 212px;"></colgroup><tbody><tr><td width="100%" colspan="12"><table width="100%" border="0" cellspacing="0" cellpadding="2"><tbody><tr valign="middle" class="tableRowAction"><td align="left" class="field" nowrap="true"><span class="tableTitle">&nbsp;</span></td>
+<td id="CrewRosterListnavBarCell" align="right" class="tableCellAction">
+&nbsp;</td>
+</tr><tr valign="middle" class="tableRowAction"><td id="CrewRosterListpageRangeCell" align="left" class="tableCellAction">
+Page <b>1</b> of 1</td>
+<td align="right" class="tableCellAction">
+&nbsp;</td>
+</tr></tbody></table></td></tr>
+<tr class="tableRowClass"><th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_0" align="left" class="tableCellHeader"><a>Flight Number</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_1" align="left" class="tableCellHeader"><a>From</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_2" align="left" class="tableCellHeader"><a>STD</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_3" align="left" class="tableCellHeader"><a>To</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_4" align="left" class="tableCellHeader"><a>STA</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_5" align="left" class="tableCellHeader"><a>A/C</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_6" align="left" class="tableCellHeader"><a>Acting Rank</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_7" align="left" class="tableCellHeader"><a>Duty</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_8" align="left" class="tableCellHeader"><a>Pairing Duty</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_9" align="left" class="tableCellHeader"><a>Staff ID</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_10" align="left" class="tableCellHeader"><a>Last Name</a><br></th>
+<th rowspan="2" colspan="1" valign="top" id="CrewRosterList_hc_11" align="left" class="tableCellHeader"><a>Remarks</a><br></th>
+</tr>
+<tr class="tableRowHeader"></tr>
+<tr class="tableRowOdd " id="0">
+<td class="cell" align="left" valign="top" id="1_0"> KE1203</td>
+<td class="cell" align="left" valign="top" id="1_1">GMP</td>
+<td class="cell" align="left" valign="top" id="1_2">22SEP22 0700</td>
+<td class="cell" align="left" valign="top" id="1_3">CJU</td>
+<td class="cell" align="left" valign="top" id="1_4">22SEP22 0810</td>
+<td class="cell" align="left" valign="top" id="1_5">737</td>
+<td class="cell" align="left" valign="top" id="1_6">FDT</td>
+<td class="cell" align="left" valign="top" id="1_7">FLY</td>
+<td class="cell" align="left" valign="top" id="1_8">FDT</td>
+<td class="cell" align="left" valign="top" id="1_9">0803073</td>
+<td class="cell" align="left" valign="top" id="1_10">LEE,YOUNG MIN</td>
+<td class="cell" align="left" valign="top" id="1_11">SVC OBS</td>
+</tr>
+<tr class="tableRowEven " id="1">
+<td class="cell" align="left" valign="top" id="2_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="2_6">CAP</td>
+<td class="cell" align="left" valign="top" id="2_7">FLY</td>
+<td class="cell" align="left" valign="top" id="2_8">CAP</td>
+<td class="cell" align="left" valign="top" id="2_9"><a href="tel:1001464">1001464</a></td>
+<td class="cell" align="left" valign="top" id="2_10">LEE,YONGJAE</td>
+<td class="cell" align="left" valign="top" id="2_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowOdd " id="2">
+<td class="cell" align="left" valign="top" id="3_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="3_6">F/O</td>
+<td class="cell" align="left" valign="top" id="3_7">FLY</td>
+<td class="cell" align="left" valign="top" id="3_8">F/O</td>
+<td class="cell" align="left" valign="top" id="3_9"><a href="tel:1903296">1903296</a></td>
+<td class="cell" align="left" valign="top" id="3_10">KIM,KYUNG TAE</td>
+<td class="cell" align="left" valign="top" id="3_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowEven " id="3">
+<td class="cell" align="left" valign="top" id="4_0"> KE1210</td>
+<td class="cell" align="left" valign="top" id="4_1">CJU</td>
+<td class="cell" align="left" valign="top" id="4_2">22SEP22 0910</td>
+<td class="cell" align="left" valign="top" id="4_3">GMP</td>
+<td class="cell" align="left" valign="top" id="4_4">22SEP22 1020</td>
+<td class="cell" align="left" valign="top" id="4_5">737</td>
+<td class="cell" align="left" valign="top" id="4_6">FDT</td>
+<td class="cell" align="left" valign="top" id="4_7">FLY</td>
+<td class="cell" align="left" valign="top" id="4_8">FDT</td>
+<td class="cell" align="left" valign="top" id="4_9">0803073</td>
+<td class="cell" align="left" valign="top" id="4_10">LEE,YOUNG MIN</td>
+<td class="cell" align="left" valign="top" id="4_11">SVC OBS</td>
+</tr>
+<tr class="tableRowOdd " id="4">
+<td class="cell" align="left" valign="top" id="5_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="5_6">CAP</td>
+<td class="cell" align="left" valign="top" id="5_7">FLY</td>
+<td class="cell" align="left" valign="top" id="5_8">CAP</td>
+<td class="cell" align="left" valign="top" id="5_9"><a href="tel:1001464">1001464</a></td>
+<td class="cell" align="left" valign="top" id="5_10">LEE,YONGJAE</td>
+<td class="cell" align="left" valign="top" id="5_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowEven " id="5">
+<td class="cell" align="left" valign="top" id="6_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="6_6">F/O</td>
+<td class="cell" align="left" valign="top" id="6_7">FLY</td>
+<td class="cell" align="left" valign="top" id="6_8">F/O</td>
+<td class="cell" align="left" valign="top" id="6_9"><a href="tel:1903296">1903296</a></td>
+<td class="cell" align="left" valign="top" id="6_10">KIM,KYUNG TAE</td>
+<td class="cell" align="left" valign="top" id="6_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowOdd " id="6">
+<td class="cell" align="left" valign="top" id="7_0"> KE1227</td>
+<td class="cell" align="left" valign="top" id="7_1">GMP</td>
+<td class="cell" align="left" valign="top" id="7_2">22SEP22 1155</td>
+<td class="cell" align="left" valign="top" id="7_3">CJU</td>
+<td class="cell" align="left" valign="top" id="7_4">22SEP22 1305</td>
+<td class="cell" align="left" valign="top" id="7_5">737</td>
+<td class="cell" align="left" valign="top" id="7_6">CAP</td>
+<td class="cell" align="left" valign="top" id="7_7">FLY</td>
+<td class="cell" align="left" valign="top" id="7_8">CAP</td>
+<td class="cell" align="left" valign="top" id="7_9"><a href="tel:1001464">1001464</a></td>
+<td class="cell" align="left" valign="top" id="7_10">LEE,YONGJAE</td>
+<td class="cell" align="left" valign="top" id="7_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowEven " id="7">
+<td class="cell" align="left" valign="top" id="8_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="8_6">FDT</td>
+<td class="cell" align="left" valign="top" id="8_7">FLY</td>
+<td class="cell" align="left" valign="top" id="8_8">FDT</td>
+<td class="cell" align="left" valign="top" id="8_9"><a href="tel:1902843">1902843</a></td>
+<td class="cell" align="left" valign="top" id="8_10">PARK, JINYOUNG</td>
+<td class="cell" align="left" valign="top" id="8_11">OBS/JOIN AT GATE/SELOO RQ //FLT NBR CHG/SMS SENT</td>
+</tr>
+<tr class="tableRowOdd " id="8">
+<td class="cell" align="left" valign="top" id="9_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="9_6">F/O</td>
+<td class="cell" align="left" valign="top" id="9_7">FLY</td>
+<td class="cell" align="left" valign="top" id="9_8">F/O</td>
+<td class="cell" align="left" valign="top" id="9_9"><a href="tel:1903296">1903296</a></td>
+<td class="cell" align="left" valign="top" id="9_10">KIM,KYUNG TAE</td>
+<td class="cell" align="left" valign="top" id="9_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowEven " id="9">
+<td class="cell" align="left" valign="top" id="10_0"> KE1238</td>
+<td class="cell" align="left" valign="top" id="10_1">CJU</td>
+<td class="cell" align="left" valign="top" id="10_2">22SEP22 1345</td>
+<td class="cell" align="left" valign="top" id="10_3">GMP</td>
+<td class="cell" align="left" valign="top" id="10_4">22SEP22 1455</td>
+<td class="cell" align="left" valign="top" id="10_5">737</td>
+<td class="cell" align="left" valign="top" id="10_6">CAP</td>
+<td class="cell" align="left" valign="top" id="10_7">FLY</td>
+<td class="cell" align="left" valign="top" id="10_8">CAP</td>
+<td class="cell" align="left" valign="top" id="10_9"><a href="tel:1001464">1001464</a></td>
+<td class="cell" align="left" valign="top" id="10_10">LEE,YONGJAE</td>
+<td class="cell" align="left" valign="top" id="10_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr class="tableRowOdd " id="10">
+<td class="cell" align="left" valign="top" id="11_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="11_6">FDT</td>
+<td class="cell" align="left" valign="top" id="11_7">FLY</td>
+<td class="cell" align="left" valign="top" id="11_8">FDT</td>
+<td class="cell" align="left" valign="top" id="11_9"><a href="tel:1902843">1902843</a></td>
+<td class="cell" align="left" valign="top" id="11_10">PARK, JINYOUNG</td>
+<td class="cell" align="left" valign="top" id="11_11">OBS/JOIN AT GATE/SELOO RQ //FLT NBR CHG/SMS SENT</td>
+</tr>
+<tr class="tableRowEven " id="11">
+<td class="cell" align="left" valign="top" id="12_0">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_1">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_2">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_3">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_4">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_5">&nbsp;</td>
+<td class="cell" align="left" valign="top" id="12_6">F/O</td>
+<td class="cell" align="left" valign="top" id="12_7">FLY</td>
+<td class="cell" align="left" valign="top" id="12_8">F/O</td>
+<td class="cell" align="left" valign="top" id="12_9"><a href="tel:1903296">1903296</a></td>
+<td class="cell" align="left" valign="top" id="12_10">KIM,KYUNG TAE</td>
+<td class="cell" align="left" valign="top" id="12_11">PATTN CHNG DUE TO A/C CONX / SMS SENT</td>
+</tr>
+<tr><td width="100%" colspan="12"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr class="tableRowAction"><td align="left" valign="bottom" class="tableCellAction" id="CrewRosterListfooterSummary">Found 12 items, showing <b>1-12</b></td>
+<td valign="bottom" align="right" class="tableCellAction">
+<span id="CrewRosterListfooterNavContainer">&nbsp;</span></td>
+</tr></tbody></table></td></tr>
+</tbody></table><input type="hidden" name="uniqueId" id="CrewRosterList_uniqueId" value="CrewRosterList"><input type="hidden" name="selectedRowsList" id="CrewRosterList_selectedRowsList"><input type="hidden" name="modifiedRowsList" id="CrewRosterList_modifiedRowsList"><input type="hidden" name="addRowsStartIndex" id="CrewRosterList_addRowsStartIndex"><input type="hidden" name="tableRowMoves" id="CrewRosterList_tableRowMoves"><div id="CrewRosterList_Editors" style="display:none"></div><div id="CrewRosterList_ModifiedValues" style="display:none"></div>
+
+<script>if ( this.TableTag == null ) alert('tabletag.js must be included in this page in-order to use the etable tag');var CrewRosterList_columns = new Array();var tmp;tmp = new Object();tmp.name = 'fltNumber';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[0] = tmp;tmp = new Object();tmp.name = 'actPortA';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[1] = tmp;tmp = new Object();tmp.name = 'departureDateTime';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[2] = tmp;tmp = new Object();tmp.name = 'actPortB';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[3] = tmp;tmp = new Object();tmp.name = 'arrivalDateTime';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[4] = tmp;tmp = new Object();tmp.name = 'fleetCd';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[5] = tmp;tmp = new Object();tmp.name = 'activeRank';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[6] = tmp;tmp = new Object();tmp.name = 'activityCd';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[7] = tmp;tmp = new Object();tmp.name = 'copDutyCd';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[8] = tmp;tmp = new Object();tmp.name = 'staffNumber';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[9] = tmp;tmp = new Object();tmp.name = 'name';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[10] = tmp;tmp = new Object();tmp.name = 'remarks';tmp.editable = false;tmp.isKeyField = false;CrewRosterList_columns[11] = tmp;var tablePageVar = new Object();tablePageVar.start = 0;tablePageVar.end = 11;tablePageVar.size = 12;tablePageVar.numPages = 1;var CrewRosterList = new TableTag('CrewRosterList', 'multiple',CrewRosterList_columns, tablePageVar, 0, 'CrewRosterList', 0,0,true);CrewRosterList.setOddRowClass('tableRowOdd');CrewRosterList.setEvenRowClass('tableRowEven');CrewRosterList.updateButtons();bodyOnload.addFunction( function () { CrewRosterList.adjustTableSize();} );</script></td></tr>
+</tbody></table></td></tr></tbody></table></td></tr></tbody></table></td>
+</tr>
+</tbody></table></td></tr></tbody></table></td></tr></tbody></table></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</body></html><html><head></head>
+<body>
+</body></html><html><head></head>
+<body>
+</body></html><html><head></head>
+<body>
+</body></html>
